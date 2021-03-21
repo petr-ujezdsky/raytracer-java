@@ -9,6 +9,8 @@ public class Matrix3 {
             0,1,0,
             0,0,1);
 
+    public static final Matrix3 BASIS = IDENTITY;
+
     private double
             m11, m12, m13,
             m21, m22, m23,
@@ -151,6 +153,39 @@ public class Matrix3 {
                 m.m11 * v.x + m.m12 * v.y + m.m13 * v.z,
                 m.m21 * v.x + m.m22 * v.y + m.m23 * v.z,
                 m.m31 * v.x + m.m32 * v.y + m.m33 * v.z
+        );
+    }
+
+    public static Matrix3 rotationX(double angle) {
+        double c = Math.cos(angle);
+        double s = Math.sin(angle);
+
+        return new Matrix3(
+                1, 0, 0,
+                0, c, -s,
+                0, s, c
+        );
+    }
+
+    public static Matrix3 rotationY(double angle) {
+        double c = Math.cos(angle);
+        double s = Math.sin(angle);
+
+        return new Matrix3(
+                c, 0, s,
+                0, 1, 0,
+                -s, 0, c
+        );
+    }
+
+    public static Matrix3 rotationZ(double angle) {
+        double c = Math.cos(angle);
+        double s = Math.sin(angle);
+
+        return new Matrix3(
+                c, -s, 0,
+                s, c, 0,
+                0, 0, 1
         );
     }
 

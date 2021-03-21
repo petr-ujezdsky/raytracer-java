@@ -1,5 +1,7 @@
 package org.pujezdsky.raytracer;
 
+import java.awt.*;
+
 public class ColorD {
     public static final ColorD ZERO = new ColorD(0, 0, 0);
 
@@ -7,10 +9,27 @@ public class ColorD {
 
     private double r, g, b;
 
+    private static double BYTE_MAX_INV = 1.0 / 255;
+
     public ColorD(double r, double g, double b) {
         this.r = toRange(r);
         this.g = toRange(g);
         this.b = toRange(b);
+    }
+
+    public ColorD(Color color) {
+        this(
+                BYTE_MAX_INV * color.getRed(),
+                BYTE_MAX_INV * color.getGreen(),
+                BYTE_MAX_INV * color.getBlue());
+    }
+
+    public ColorD(int rgb) {
+        this(
+                BYTE_MAX_INV * ((rgb >> 16) & 0x000000FF),
+                BYTE_MAX_INV * ((rgb >> 8) & 0x000000FF),
+                BYTE_MAX_INV * ((rgb) & 0x000000FF)
+        );
     }
 
     public void mutAdd(ColorD color) {
