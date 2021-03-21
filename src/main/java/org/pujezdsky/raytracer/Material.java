@@ -48,11 +48,31 @@ public class Material {
         this(m.diffusion, m.reflection, m.refraction, m.N, m.gloss, m.color);
     }
 
+    public double getGloss() {
+        return gloss;
+    }
+
+    public double getN() {
+        return N;
+    }
+
+    public double getReflection() {
+        return reflection;
+    }
+
+    public double getRefraction() {
+        return refraction;
+    }
+
     public IBitmap getTexture() {
         return texture;
     }
 
     public void setColor(ColorD color) {
         this.color = color;
+    }
+
+    public void setRefraction(double refraction) {
+        this.refraction = refraction;
     }
 }
