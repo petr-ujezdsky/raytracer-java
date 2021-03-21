@@ -8,6 +8,11 @@ public abstract class SceneObject {
 
     protected Vector3 origin = new Vector3();
 
+    public SceneObject(Vector3 origin, Matrix3 basis) {
+        this.basis = basis;
+        this.origin = origin;
+    }
+
     public abstract CollisionResult collision(Ray ray);
     public abstract boolean collision(Ray ray, double maxDistanceSq);
 

@@ -48,5 +48,11 @@ public class Material {
         this(m.diffusion, m.reflection, m.refraction, m.N, m.gloss, m.color);
     }
 
+    public IBitmap getTexture() {
+        return texture;
+    }
 
+    public void setColor(ColorD color) {
+        this.color = color;
+    }
 }
