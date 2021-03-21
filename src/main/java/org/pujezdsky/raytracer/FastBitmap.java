@@ -1,6 +1,6 @@
 package org.pujezdsky.raytracer;
 
-public class FastBitmap {
+public class FastBitmap implements IBitmap {
 
     private final int width, height;
 
