@@ -7,9 +7,9 @@ public class Vector3 {
     public static final Vector3 E2 = new Vector3(0, 1, 0);
     public static final Vector3 E3 = new Vector3(0, 0, 1);
 
-    private double x;
-    private double y;
-    private double z;
+    public double x;
+    public double y;
+    public double z;
 
     public Vector3(double x, double y, double z) {
         this.x = x;

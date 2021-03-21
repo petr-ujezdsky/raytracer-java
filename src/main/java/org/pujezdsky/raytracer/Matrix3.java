@@ -73,6 +73,10 @@ public class Matrix3 {
         return multiply(this, d);
     }
 
+    public Vector3 multiply(Vector3 v) {
+        return multiply(this, v);
+    }
+
     public static Matrix3 add(Matrix3 a, Matrix3 b) {
         return new Matrix3(
                 a.m11 + b.m11, a.m12 + b.m12, a.m13 + b.m13,
@@ -107,6 +111,25 @@ public class Matrix3 {
                 a.m11 * d, a.m12 * d, a.m13 * d,
                 a.m21 * d, a.m22 * d, a.m23 * d,
                 a.m31 * d, a.m32 * d, a.m33 * d
+        );
+    }
+
+    public static Vector3 multiply(Matrix3 m, Vector3 v) {
+        return new Vector3(
+                m.m11 * v.x + m.m12 * v.y + m.m13 * v.z,
+                m.m21 * v.x + m.m22 * v.y + m.m23 * v.z,
+                m.m31 * v.x + m.m32 * v.y + m.m33 * v.z
+        );
+    }
+
+    public static Matrix3 rotation(Vector3 axis, double angle) {
+        double c = Math.cos(angle);
+        double s = Math.sin(angle);
+
+        return new Matrix3(
+                axis.x * axis.x + (1 - axis.x * axis.x) * c, axis.x * axis.y * (1 - c) - axis.z * s, axis.x * axis.z * (1 - c) + axis.y * s,
+                axis.x * axis.y * (1 - c) + axis.z * s, axis.y * axis.y + (1 - axis.y * axis.y) * c, axis.y * axis.z * (1 - c) - axis.x * s,
+                axis.x * axis.z * (1 - c) - axis.y * s, axis.y * axis.z * (1 - c) + axis.x * s, axis.z * axis.z + (1 - axis.z * axis.z) * c
         );
     }
 
