@@ -53,6 +53,14 @@ public class Matrix3 {
         return m11 * m22 * m33;
     }
 
+    public Matrix3 transpose() {
+        return new Matrix3(
+                m11, m21, m31,
+                m12, m22, m32,
+                m13, m23, m33
+        );
+    }
+
     public Matrix3 add(Matrix3 m) {
         return add(this, m);
     }
