@@ -83,6 +83,10 @@ public class Vector3 {
         );
     }
 
+    public Vector3 negate() {
+        return new Vector3(-x, -y, -z);
+    }
+
     public Vector3 normalize() {
         double length = getLength();
 

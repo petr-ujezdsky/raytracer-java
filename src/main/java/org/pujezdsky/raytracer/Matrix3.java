@@ -28,6 +28,30 @@ public class Matrix3 {
         this.m33 = m33;
     }
 
+    public Matrix3(Vector3 a, Vector3 b, Vector3 c, boolean asRows) {
+        if (asRows) {
+            m11 = a.x;
+            m12 = a.y;
+            m13 = a.z;
+            m21 = b.x;
+            m22 = b.y;
+            m23 = b.z;
+            m31 = c.x;
+            m32 = c.y;
+            m33 = c.z;
+        } else {
+            m11 = a.x;
+            m21 = a.y;
+            m31 = a.z;
+            m12 = b.x;
+            m22 = b.y;
+            m32 = b.z;
+            m13 = c.x;
+            m23 = c.y;
+            m33 = c.z;
+        }
+    }
+
     public void mutTranspose() {
         double tmp;
 
