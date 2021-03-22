@@ -24,6 +24,13 @@ public class ColorD {
                 BYTE_MAX_INV * color.getBlue());
     }
 
+    public ColorD(ColorD color) {
+        this(
+                color.r,
+                color.g,
+                color.b);
+    }
+
     public ColorD(int rgb) {
         this(
                 BYTE_MAX_INV * ((rgb >> 16) & 0x000000FF),
