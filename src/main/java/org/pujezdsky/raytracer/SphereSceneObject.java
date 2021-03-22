@@ -14,7 +14,6 @@ public class SphereSceneObject extends SceneObject {
         Vector3 collisionPoint = new Vector3();
         Vector3 normal = new Vector3();
         double distance = 0;
-        boolean inObject = false;
         Vector3 v = ray.getPosition().subtract(origin);
         double tmp1 = -(Vector3.dot(v, ray.getDirection()));
         double tmp2 = tmp1 * tmp1 - v.getLengthSq() + r * r;
@@ -27,7 +26,7 @@ public class SphereSceneObject extends SceneObject {
             //sphere is in front of us
             if (t >= 0) {
                 collisionPoint = (ray.getPosition().add(ray.getDirection().multiply(t)));
-                normal = collisionPoint;
+                normal = new Vector3(collisionPoint);
                 normal.mutSubtract(origin);
                 normal.mutMultiply(rOver);
                 //normal = GetNormalAt(collisionPoint);
@@ -35,18 +34,17 @@ public class SphereSceneObject extends SceneObject {
                         collisionPoint,
                         t,
                         normal,
-                        true
+                        false
                 );
             } else {
                 t = Math.max(t1, t2);
                 //we are in the sphere
                 if (t >= 0) {
                     collisionPoint = (ray.getPosition().add(ray.getDirection().multiply(t)));
-                    normal = collisionPoint;
+                    normal = new Vector3(collisionPoint);
                     normal.mutSubtract(origin);
                     normal.mutMultiply(rOver);
                     //normal = GetNormalAt(collisionPoint);
-                    inObject = true;
                     return new CollisionResult(
                             collisionPoint,
                             t,
