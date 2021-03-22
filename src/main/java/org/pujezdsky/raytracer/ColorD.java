@@ -72,6 +72,14 @@ public class ColorD {
                 b * color.b);
     }
 
+    public int toARGB() {
+        return
+                0xFF000000 +
+                        ((int) (r * 255) << 16) +
+                        ((int) (g * 255) << 8) +
+                        ((int) (b * 255));
+    }
+
     private double toRange(double d) {
         return Math.min(Math.max(0, d), 1);
     }
