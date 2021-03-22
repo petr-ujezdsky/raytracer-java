@@ -30,7 +30,7 @@ public class Material {
         diffusion = 1;
         reflection = 0;
         refraction = 0;
-        color = ColorD.ZERO;
+        color = new ColorD(ColorD.ZERO);
         N = 1;
         gloss = 1;
     }

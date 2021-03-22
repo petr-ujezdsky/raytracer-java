@@ -71,7 +71,7 @@ public class RayTracer {
 
     private ColorD trace(Ray ray, double nFrom, int numReflections, int numRefractions) {
         if (numReflections > NUM_REFLECTIONS || numRefractions > NUM_REFRACTIONS) {
-            return ColorD.ZERO;
+            return new ColorD(ColorD.ZERO);
         }
 
 //        double distance = double.MaxValue;
@@ -102,9 +102,9 @@ public class RayTracer {
 
             Material material = sceneObject.getMaterialAt(collisionPoint);
             double nTo = (inObject) ? world.getN() : material.getN();
-            ColorD colorReflection = ColorD.ZERO,
-                    colorDiffusion = ColorD.ZERO,
-                    color = ColorD.ZERO,
+            ColorD colorReflection = new ColorD(ColorD.ZERO),
+                    colorDiffusion = new ColorD(ColorD.ZERO),
+                    color = new ColorD(ColorD.ZERO),
                     tmpColor;
             Vector3 tmpVector = Vector3.EMPTY;
 
@@ -172,6 +172,6 @@ public class RayTracer {
             }
             return color;
         } else
-            return ColorD.ZERO;
+            return new ColorD(ColorD.ZERO);
     }
 }
