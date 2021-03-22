@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 
 public class WorldLoader {
 
-    public World initWorld() {
+    public static World initWorld() {
         World world = new World();
         SceneObject sphereLeft = new SphereSceneObject(new Vector3(0, 0, 0), Matrix3.rotationZ(3.14 / 1), 3);
         SceneObject sphereRight = new SphereSceneObject(new Vector3(-5, 0, 2), Matrix3.BASIS, 2);

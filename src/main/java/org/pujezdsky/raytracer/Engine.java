@@ -1,8 +1,11 @@
 package org.pujezdsky.raytracer;
 
+import java.awt.image.BufferedImage;
+import java.util.stream.IntStream;
+
 public class Engine {
 
-    public IBitmap render(World world) {
+    public BufferedImage render(World world) {
         double dOmega = Math.PI / 30;
         int time = 179;
         int ratio = 1;
@@ -40,6 +43,26 @@ public class Engine {
                 System.currentTimeMillis() - start);
         System.out.println(msg);
 
-        return fImg;
+        return convert(fImg);
+    }
+
+    private BufferedImage convert(IBitmap fImg) {
+
+        int[] pixels = new int[fImg.getWidth() * fImg.getHeight()];
+
+        IntStream.range(0, fImg.getHeight())
+                .parallel()
+                .forEach(y -> {
+                    IntStream.range(0, fImg.getWidth())
+                            .forEach(x -> pixels[y * fImg.getWidth() + x] = fImg.getPixelAt(x, y).toARGB());
+                });
+
+
+        BufferedImage img = new BufferedImage(fImg.getWidth(), fImg.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+
+        img.setRGB(0, 0, fImg.getWidth(), fImg.getHeight(), pixels, 0, 1);
+
+        return img;
     }
 }
