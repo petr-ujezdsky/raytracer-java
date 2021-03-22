@@ -18,8 +18,7 @@ public class RayTracer {
         this.world = world;
     }
 
-    public FastBitmap render(Camera camera, int width, int height)
-    {
+    public FastBitmap render(Camera camera, int width, int height) {
         if (width <= 0 || height <= 0)
             return null;
         camera.setDimensions(width, height);
@@ -40,6 +39,7 @@ public class RayTracer {
 
         return fImg;
     }
+
     private void renderBlock(int y1, int y2, int width, int height, Camera camera, FastBitmap fImg) {
         //Thread.CurrentThread.Priority = ThreadPriority.Lowest;
         //Console.WriteLine("Rendering range {0} - {1}", y1, y2);
@@ -65,6 +65,8 @@ public class RayTracer {
                 fImg.setPixelAt(x, y, color);
             }
         }
+
+        blocksDone.incrementAndGet();
     }
 
     private ColorD trace(Ray ray, double nFrom, int numReflections, int numRefractions) {

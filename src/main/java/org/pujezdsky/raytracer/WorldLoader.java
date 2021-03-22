@@ -3,6 +3,8 @@ package org.pujezdsky.raytracer;
 import java.awt.*;
 import java.nio.file.Paths;
 
+import static org.pujezdsky.raytracer.App.HOME;
+
 public class WorldLoader {
 
     public static World initWorld() {
@@ -11,7 +13,7 @@ public class WorldLoader {
         SceneObject sphereRight = new SphereSceneObject(new Vector3(-5, 0, 2), Matrix3.BASIS, 2);
 
         SceneObject boundsDown = new PlaneSceneObject(new Vector3(0, 0, -20), Matrix3.BASIS);
-        boundsDown.getMaterial().setTexture(TextureLoader.loadFromFile(Paths.get("~/Obrázky/Star-Wars-Falcon.jpeg")));
+        boundsDown.getMaterial().setTexture(TextureLoader.loadFromFile(Paths.get(HOME, "/Obrázky/Star-Wars-Falcon.jpeg")));
         SceneObject boundsUp = new PlaneSceneObject(new Vector3(0, 0, 20), Matrix3.rotationX(Math.PI));
         SceneObject boundsLeft = new PlaneSceneObject(new Vector3(0, 20, 0), Matrix3.rotationX(Math.PI / 2));
         SceneObject boundsRight = new PlaneSceneObject(new Vector3(0, -20, 0), Matrix3.rotationX(-Math.PI / 2));
@@ -26,7 +28,7 @@ public class WorldLoader {
         sphereLeft.getMaterial().setColor(new ColorD(Color.YELLOW));
         sphereLeft.getMaterial().setDiffusion(1);
         sphereLeft.getMaterial().setReflection(1 - sphereLeft.getMaterial().getDiffusion());
-        sphereLeft.getMaterial().setTexture(TextureLoader.loadFromFile(Paths.get("~/Obrázky/wanted.jpg")));
+        sphereLeft.getMaterial().setTexture(TextureLoader.loadFromFile(Paths.get(HOME, "/Obrázky/wanted.jpg")));
 
         sphereRight.getMaterial().setColor(new ColorD(Color.BLUE));
         sphereRight.getMaterial().setDiffusion(0.2);
@@ -39,7 +41,7 @@ public class WorldLoader {
         rect.getMaterial().setColor(new ColorD(Color.RED));
         rect.getMaterial().setDiffusion(1);// 0.6;
         rect.getMaterial().setReflection(0);// 1 - rect.Material.Diffusion;
-        rect.getMaterial().setTexture(TextureLoader.loadFromFile(Paths.get("~/Obrázky/wanted.jpg")));
+        rect.getMaterial().setTexture(TextureLoader.loadFromFile(Paths.get(HOME, "/Obrázky/wanted.jpg")));
         rect.getMaterial().setN(world.getN());
         //rect.Material = Material.Mirror;
 

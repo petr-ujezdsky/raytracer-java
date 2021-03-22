@@ -9,6 +9,10 @@ import java.nio.file.Path;
  * Hello world!
  */
 public class App {
+
+    public static String HOME = System.getProperty("user.home");
+
+
     public static void main(String[] args) throws IOException {
         System.out.println("Hello World!");
 
@@ -19,6 +23,6 @@ public class App {
 
         BufferedImage image = engine.render(world);
 
-        ImageIO.write(image, "png", Path.of("~/temp/out.png").toFile());
+        ImageIO.write(image, "png", Path.of(HOME, "/temp/out.png").toFile());
     }
 }

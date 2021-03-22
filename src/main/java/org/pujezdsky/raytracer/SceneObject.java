@@ -2,7 +2,7 @@ package org.pujezdsky.raytracer;
 
 public abstract class SceneObject {
 
-    protected Material material;
+    protected Material material = new Material();
 
     protected Matrix3 basis = Matrix3.IDENTITY;
 
