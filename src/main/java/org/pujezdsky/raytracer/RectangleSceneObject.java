@@ -25,7 +25,7 @@ public class RectangleSceneObject extends SceneObject {
 
         if (!provideInObject && dotDirectionNormal > 0) {
             dotDirectionNormal = -dotDirectionNormal;
-            normal.mutMultiply(-1);
+            normal = normal.multiply(-1);
         }
 
         if (dotDirectionNormal != 0) {
@@ -40,10 +40,10 @@ public class RectangleSceneObject extends SceneObject {
                 inObject = (dotDirectionNormal > 0);
             }
 
-            Vector3 collisionPoint = new Vector3(ray.getDirection());
+            Vector3 collisionPoint = ray.getDirection()
+                    .multiply(distance)
+                    .add(ray.getPosition());
 
-            collisionPoint.mutMultiply(distance);
-            collisionPoint.mutAdd(ray.getPosition());
             Vector3 collisionPointRelative = pointWorldToLocal(collisionPoint);
 
             if (collisionPointRelative.x < width && collisionPointRelative.y < height && collisionPointRelative.x > 0 && collisionPointRelative.y > 0) {
@@ -65,7 +65,7 @@ public class RectangleSceneObject extends SceneObject {
 
         if (!provideInObject && dotDirectionNormal > 0) {
             dotDirectionNormal = -dotDirectionNormal;
-            normal.mutMultiply(-1);
+            normal = normal.multiply(-1);
         }
 
         if (dotDirectionNormal != 0) {
@@ -74,9 +74,10 @@ public class RectangleSceneObject extends SceneObject {
                 return false;
             }
 
-            Vector3 collisionPoint = new Vector3(ray.getDirection());
-            collisionPoint.mutMultiply(distance);
-            collisionPoint.mutAdd(ray.getPosition());
+            Vector3 collisionPoint = ray.getDirection()
+                    .multiply(distance)
+                    .add(ray.getPosition());
+
             Vector3 collisionPointRelative = pointWorldToLocal(collisionPoint);
 
             if (collisionPointRelative.x < width && collisionPointRelative.y < height && collisionPointRelative.x > 0 && collisionPointRelative.y > 0) {

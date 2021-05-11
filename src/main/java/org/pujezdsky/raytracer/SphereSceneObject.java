@@ -26,9 +26,7 @@ public class SphereSceneObject extends SceneObject {
             //sphere is in front of us
             if (t >= 0) {
                 collisionPoint = (ray.getPosition().add(ray.getDirection().multiply(t)));
-                normal = new Vector3(collisionPoint);
-                normal.mutSubtract(origin);
-                normal.mutMultiply(rOver);
+                normal = collisionPoint.subtract(origin).multiply(rOver);
                 //normal = GetNormalAt(collisionPoint);
                 return new CollisionResult(
                         collisionPoint,
@@ -41,9 +39,7 @@ public class SphereSceneObject extends SceneObject {
                 //we are in the sphere
                 if (t >= 0) {
                     collisionPoint = (ray.getPosition().add(ray.getDirection().multiply(t)));
-                    normal = new Vector3(collisionPoint);
-                    normal.mutSubtract(origin);
-                    normal.mutMultiply(rOver);
+                    normal = collisionPoint.subtract(origin).multiply(rOver);
                     //normal = GetNormalAt(collisionPoint);
                     return new CollisionResult(
                             collisionPoint,

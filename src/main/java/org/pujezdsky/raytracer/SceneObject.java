@@ -18,15 +18,12 @@ public abstract class SceneObject {
 
 
     public Vector3 pointWorldToLocal(Vector3 world) {
-        world.mutSubtract(origin);
-        return basis.multiply(world);
+        return basis.multiply(world.subtract(origin));
     }
 
     public Vector3 pointLocalToWorld(Vector3 local) {
         Matrix3 m = basis.transpose();
-        Vector3 world = m.multiply(local);
-        world.mutAdd(origin);
-        return world;
+        return m.multiply(local).add(origin);
     }
 
     protected void transform(Matrix3 rotation, Vector3 translation) {

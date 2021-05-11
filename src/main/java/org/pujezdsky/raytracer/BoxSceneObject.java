@@ -19,9 +19,10 @@ public class BoxSceneObject extends SceneObject {
         rectangles[1] = new RectangleSceneObject(origin, new Matrix3(dirX, dirZ, dirY.negate(), true), width, depth, true);//predni stena
         rectangles[2] = new RectangleSceneObject(origin, new Matrix3(dirZ, dirY, dirX.negate(), true), depth, height, true);//leva stena
 
-        origin.mutAdd(dirX.multiply(width));
-        origin.mutAdd(dirY.multiply(height));
-        origin.mutAdd(dirZ.multiply(depth));
+        origin = origin
+                .add(dirX.multiply(width))
+                .add(dirY.multiply(height))
+                .add(dirZ.multiply(depth));
         rectangles[3] = new RectangleSceneObject(origin, new Matrix3(dirX.negate(), dirY.negate(), dirZ, true), width, height, true);//strop
         rectangles[4] = new RectangleSceneObject(origin, new Matrix3(dirY.negate(), dirZ.negate(), dirX, true), height, depth, true);//prava stena
         rectangles[5] = new RectangleSceneObject(origin, new Matrix3(dirZ.negate(), dirX.negate(), dirY, true), depth, width, true);//zadni stena

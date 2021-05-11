@@ -9,9 +9,9 @@ public class Vector3 {
     public static final Vector3 E2 = new Vector3(0, 1, 0);
     public static final Vector3 E3 = new Vector3(0, 0, 1);
 
-    public double x;
-    public double y;
-    public double z;
+    public final double x;
+    public final double y;
+    public final double z;
 
     public Vector3() {
         this(0, 0, 0);
@@ -33,32 +33,6 @@ public class Vector3 {
 
     public double getLength() {
         return Math.sqrt(getLengthSq());
-    }
-
-    public void mutAdd(Vector3 v) {
-        x += v.x;
-        y += v.y;
-        z += v.z;
-    }
-
-    public void mutSubtract(Vector3 v) {
-        x -= v.x;
-        y -= v.y;
-        z -= v.z;
-    }
-
-    public void mutMultiply(double d) {
-        x *= d;
-        y *= d;
-        z *= d;
-    }
-
-    public void mutNormalize() {
-        double length = getLength();
-
-        x /= length;
-        y /= length;
-        z /= length;
     }
 
     public Vector3 add(Vector3 v) {
@@ -97,10 +71,6 @@ public class Vector3 {
                 y / length,
                 z / length
         );
-    }
-
-    public void mutZeroize() {
-        x = y = z = 0;
     }
 
     public static double dot(Vector3 a, Vector3 b) {

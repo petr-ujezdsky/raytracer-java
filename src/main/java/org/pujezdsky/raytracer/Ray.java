@@ -26,12 +26,10 @@ public class Ray {
         //direction += (0.2 + Math.Pow(rnd.NextDouble(), 20) * k) * Vector3.CrossProduct(direction, normal).ToNormal();
 
         //direction = direction - 2 * (Vector3.Dot(normal, direction)) * normal;
-        normal.mutMultiply(2 * (Vector3.dot(normal, direction)));
-        direction.mutSubtract(normal);
+        direction = direction.subtract(normal.multiply(2 * (Vector3.dot(normal, direction))));
 
-        position = point;
         //        position.Add(0.000001d * direction);
-        position.mutAdd(direction.multiply(0.000001d));
+        position = point.add(direction.multiply(0.000001d));
     }
 
     public void refractAndMove(Vector3 normal, Vector3 point, double nFrom, double nTo) {

@@ -22,39 +22,6 @@ public class Vector3Test extends TestCase {
     }
 
     @Test
-    public void testMutAdd() {
-        Vector3 v = new Vector3(1, 2, 3);
-
-        v.mutAdd(new Vector3(5, 6, 7));
-
-        assertEquals(6.0, v.getX());
-        assertEquals(8.0, v.getY());
-        assertEquals(10.0, v.getZ());
-    }
-
-    @Test
-    public void testMutSubtract() {
-        Vector3 v = new Vector3(1, 2, 3);
-
-        v.mutSubtract(new Vector3(5, 6, 7));
-
-        assertEquals(-4.0, v.getX());
-        assertEquals(-4.0, v.getY());
-        assertEquals(-4.0, v.getZ());
-    }
-
-    @Test
-    public void testMutMultiply() {
-        Vector3 v = new Vector3(1, 2, 3);
-
-        v.mutMultiply(5.0);
-
-        assertEquals(5.0, v.getX());
-        assertEquals(10.0, v.getY());
-        assertEquals(15.0, v.getZ());
-    }
-
-    @Test
     public void testAdd() {
         Vector3 v = new Vector3(1, 2, 3);
 

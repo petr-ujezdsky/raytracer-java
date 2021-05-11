@@ -14,7 +14,7 @@ public class PlaneSceneObject extends SceneObject {
 
         if (dotDirectionNormal > 0) {
             dotDirectionNormal = -dotDirectionNormal;
-            normal.mutMultiply(-1);
+            normal = normal.multiply(-1);
         }
 
         if (dotDirectionNormal != 0) {
@@ -23,9 +23,9 @@ public class PlaneSceneObject extends SceneObject {
                 return null;
             }
 
-            Vector3 collisionPoint = new Vector3(ray.getDirection());
-            collisionPoint.mutMultiply(distance);
-            collisionPoint.mutAdd(ray.getPosition());
+            Vector3 collisionPoint = new Vector3(ray.getDirection())
+                    .multiply(distance)
+                    .add(ray.getPosition());
 
             return new CollisionResult(
                     collisionPoint,
@@ -45,7 +45,7 @@ public class PlaneSceneObject extends SceneObject {
 
         if (dotDirectionNormal > 0) {
             dotDirectionNormal = -dotDirectionNormal;
-            normal.mutMultiply(-1);
+            normal = normal.multiply(-1);
         }
 
         if (dotDirectionNormal != 0) {

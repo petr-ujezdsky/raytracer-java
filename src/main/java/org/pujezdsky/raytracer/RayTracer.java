@@ -124,13 +124,12 @@ public class RayTracer {
 
             ray.reflectAndMove(normal, collisionPoint);
             Vector3 collisionPointPrecise = collisionPoint;
-            collisionPoint.mutAdd(normal.multiply(0.000001d));
+            collisionPoint = collisionPoint.add(normal.multiply(0.000001d));
             double lengthSq = 0;
             for (Light light : world.getLights()) {
-                tmpVector = light.getPosition();
-                tmpVector.mutSubtract(collisionPoint);
+                tmpVector = light.getPosition().subtract(collisionPoint);
                 lengthSq = tmpVector.getLengthSq();
-                tmpVector.mutNormalize();
+                tmpVector = tmpVector.normalize();
                 Ray rayToLight = new Ray(collisionPoint, tmpVector);
                 //if (Vector3.Dot(rayToLight.Direction, normal) <= 0)                        continue;
 
