@@ -147,7 +147,7 @@ public class RayTracer {
 
                     //Diffuse
                     if (dotLightDiffuse > 0) {
-                        tmpColor = material.getColor();
+                        tmpColor = new ColorD(material.getColor());
                         tmpColor.mutMultiply(dotLightDiffuse);
                         colorDiffusion.mutAdd(tmpColor);
                     }

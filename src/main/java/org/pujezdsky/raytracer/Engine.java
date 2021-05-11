@@ -61,7 +61,7 @@ public class Engine {
         BufferedImage img = new BufferedImage(fImg.getWidth(), fImg.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
 
-        img.setRGB(0, 0, fImg.getWidth(), fImg.getHeight(), pixels, 0, 1);
+        img.setRGB(0, 0, fImg.getWidth(), fImg.getHeight(), pixels, 0, fImg.getWidth());
 
         return img;
     }
